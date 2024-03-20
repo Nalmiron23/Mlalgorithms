@@ -131,3 +131,31 @@ def model(X, Y, hidden_size, epochs = 1000):
         print ("Cost after iteration %i: %f" %(i, cost))
 
     return parameters
+
+# Training data
+X = np.array([[0,0,1,1],
+              [0,1,1,1],
+              [1,0,1,1],
+               [1,1,1,1]])
+
+# Expected output
+Y = np.array([[0],[1],[1],[1]])
+
+
+# Apply the model
+parameters = model(X, Y, hidden_size = 4, epochs = 1000)
+
+
+# Predict the output
+def predict(parameters, X):
+
+    A2, cache = forward(X, parameters) 
+    
+    return np.round(A2,3)
+
+
+
+print('The output is:') 
+print(predict(parameters,X))
+print('The expected output:')
+print(Y)
