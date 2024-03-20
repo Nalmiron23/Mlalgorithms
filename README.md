@@ -8,10 +8,10 @@ I detta arkiv kommer jag att öva och utveckla maskininlärningsalgoritmer från
 This will be an ongoing project for my studies as a B.Sc Applied Artificial Intelligence and my preparation for the working sphere. 
 I am hoping to cover the following:
 
-- Linear Regression :heavy_check_mark:
+- Linear Regression 
 - Polynomial Regression
-- Logistic Regression :heavy_check_mark:
-- Support Vector Machines :heavy_check_mark:
+- Logistic Regression 
+- Support Vector Machines 
 - K-Nearest Neighboor :heavy_check_mark:
 - Naive Bayes
 - K-Means
