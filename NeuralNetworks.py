@@ -51,3 +51,12 @@ def forward(X, parameters):
     cache = {"Z1": Z1, "A1": A1, "Z2": Z2, "A2": A2}
     
     return A2, cache
+
+# Cross entropy loss function
+def compute_cost(A2, Y):
+    
+    cost = (-1/Y.shape[1]) * np.sum(Y*np.log(A2) + (1-Y) * np.log(1-A2))
+    cost = float(np.squeeze(cost))
+    
+    return cost
+
