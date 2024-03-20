@@ -83,3 +83,51 @@ def backprop(parameters, cache, X, Y):
     grads = {"dW1": dW1, "db1": db1, "dW2": dW2, "db2": db2}
     
     return grads
+
+# update the parameters
+def update_params(parameters, grads, alpha = 1):
+
+    # fetch grads, weights and biases from dicts
+    W1 = parameters['W1']
+    b1 = parameters['b1']
+    W2 = parameters['W2']
+    b2 = parameters['b2']
+    dW1 = grads['dW1']
+    db1 = grads['db1']
+    dW2 = grads['dW2']
+    db2 = grads['db2']
+
+    # update them 
+    W1 -= alpha * dW1
+    b1 -= alpha * db1
+    W2 -= alpha * dW2
+    b2 -= alpha * db2
+
+    # store in dict
+    parameters = {"W1": W1, "b1": b1, "W2": W2, "b2": b2}
+    
+    return parameters
+
+# Define the model
+def model(X, Y, hidden_size, epochs = 1000):
+
+    # Initiate layer size
+    np.random.seed(3)
+    input_size = layer_size(X, Y)[0]
+    output_size = layer_size(X, Y)[2]
+
+    # Intialse the weights
+    parameters = initialise_parameters(input_size, hidden_size, output_size)
+
+    # Train the model
+    for i in range(0, epochs):
+         
+        A2, cache = forward(X, parameters)
+        cost = compute_cost(A2, Y)
+        grads = backprop(parameters, cache, X, Y)
+        parameters = update_params(parameters, grads)
+        
+        # Print the cost every 1000 iterations
+        print ("Cost after iteration %i: %f" %(i, cost))
+
+    return parameters
