@@ -32,3 +32,22 @@ def sigmoid(z):
 # Derivative
 def d_sigmoid(z):
     return z*(1-z)
+# Forward prop
+def forward(X, parameters):
+
+    # Get parameters from dict
+    W1 = parameters['W1']
+    W2 = parameters['W2']
+    b1 = parameters['b1']
+    b2 = parameters['b2']
+
+    # Calculate the forward using the activation function
+    Z1 = np.dot(W1,X) + b1
+    A1 = np.tanh(Z1)
+    Z2 = np.dot(W2,A1) + b2
+    A2 = sigmoid(Z2)
+
+    # Store the values in a dict
+    cache = {"Z1": Z1, "A1": A1, "Z2": Z2, "A2": A2}
+    
+    return A2, cache
